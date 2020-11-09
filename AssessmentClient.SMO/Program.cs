@@ -5,6 +5,8 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using System.IO;
+
     using Microsoft.SqlServer.Management.Assessment;
     using Microsoft.SqlServer.Management.Assessment.Checks;
     using Microsoft.SqlServer.Management.Smo;
@@ -15,26 +17,26 @@
         {
             // Connect to a server or a database with SMO
             // https://docs.microsoft.com/en-us/sql/relational-databases/server-management-objects-smo/create-program/connecting-to-an-instance-of-sql-server
-            Server server = new Server();
+            var target = new Server();
 
 
             // Use GetAssessmentItem method to obtain
             // a list of available SQL Assessment checks
-            IEnumerable<ICheck> checks = server.GetAssessmentItems();
+            IEnumerable<ICheck> checklist = target.GetAssessmentItems();
 
 
             // Checks are tagged with strings corresponding to
             // categories like "Performance", "Storage", or "Security"
-            var allTags = new SortedSet<string>(checks.SelectMany(c => c.Tags));
+            var allTags = new SortedSet<string>(checklist.SelectMany(c => c.Tags));
 
-            DisplayCategories(server.Name, allTags);
+            DisplayCategories(target.Name, allTags);
 
             while (Prompt(out string? line))
             {
                 // Use GetAssessmentResultsList to run assessment
                 List<IAssessmentResult> assessmentResults = string.IsNullOrWhiteSpace(line) 
-                    ? await server.GetAssessmentResultsList().ConfigureAwait(false)              // all checks
-                    : await server.GetAssessmentResultsList(line.Split()).ConfigureAwait(false); // selected checks
+                    ? await target.GetAssessmentResultsList().ConfigureAwait(false)              // all checks
+                    : await target.GetAssessmentResultsList(line.Split()).ConfigureAwait(false); // selected checks
 
                 DisplayAssessmentResults(assessmentResults);
             }
@@ -56,7 +58,7 @@
 
         private static bool Prompt(out string? line)
         {
-            Console.Write("Enter category (ENTER for all categories, 'exit' to quit) > ");
+            Console.Write("Enter category (ENTER for all categories, 'exit' to leave) > ");
             line = Console.ReadLine();
 
             return string.Compare(line, "exit", StringComparison.OrdinalIgnoreCase) != 0;
