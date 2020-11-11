@@ -44,17 +44,16 @@ List<IAssessmentResult> results = await target.GetAssessmentResultsList();
 
 ### Invoke assessment with selected checks
 
-SQL Assessment API gives a collection of checks currently available for given target. Selected checks may be passed to `GetAssessmentResultsList`. 
+SQL Assessment API gives a collection of checks currently available for given target. Selected checks may be passed to `GetAssessmentResultsList`.
 
 ```CSharp
 IEnumerable<ICheck> availableChecks = target.GetAssessmentItems();
 ```
 
-Select or adjust checks to be run.
+Select checks to be run.
 
 ```CSharp
 var checklist = availableChecks.First(5);
-checklist[0].Message = "New message";
 var results = await target.GetAssessmentResultsList(checklist);
 ```
 
