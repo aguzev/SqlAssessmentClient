@@ -1,5 +1,5 @@
 ﻿using System.Data.Common;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 using Microsoft.SqlServer.Management.Assessment.Configuration;
 
 namespace AssessmentClient.SMO
@@ -63,8 +63,8 @@ namespace AssessmentClient.SMO
         {
             var sb = new SqlConnectionStringBuilder
             {
-                Authentication = SqlAuthenticationMethod.ActiveDirectoryIntegrated,
-                DataSource = "."
+                DataSource = ".",
+                IntegratedSecurity = true
             };
 
             return sb.ToString();
