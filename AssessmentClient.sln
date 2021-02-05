@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssessmentClient.SMO", "AssessmentClient.SMO\AssessmentClient.SMO.csproj", "{C9745F7C-40B1-43FA-AA5D-C2BF0588038D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssessmentClient.SMO", "AssessmentClient.SMO\AssessmentClient.SMO.csproj", "{C9745F7C-40B1-43FA-AA5D-C2BF0588038D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssessmentClient.Direct", "AssessmentClient.Direct\AssessmentClient.Direct.csproj", "{BA964A06-92A6-4D72-BE9A-7B22734DE7B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C9745F7C-40B1-43FA-AA5D-C2BF0588038D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9745F7C-40B1-43FA-AA5D-C2BF0588038D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9745F7C-40B1-43FA-AA5D-C2BF0588038D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA964A06-92A6-4D72-BE9A-7B22734DE7B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA964A06-92A6-4D72-BE9A-7B22734DE7B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA964A06-92A6-4D72-BE9A-7B22734DE7B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA964A06-92A6-4D72-BE9A-7B22734DE7B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
